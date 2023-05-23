@@ -15,12 +15,12 @@ class Application extends AbstractApplication
         parent::__construct('cli', '');
     }
 
-    protected function getCommandName(InputInterface $input)
+    protected function getCommandName(InputInterface $input): ?string
     {
         return 'analyze';
     }
 
-    protected function getDefaultCommands()
+    protected function getDefaultCommands(): array
     {
         $defaultCommands = AbstractApplication::getDefaultCommands();
         $defaultCommands[] = new AnalyzeCommand();
@@ -28,7 +28,7 @@ class Application extends AbstractApplication
         return $defaultCommands;
     }
 
-    public function getDefinition()
+    public function getDefinition(): \Symfony\Component\Console\Input\InputDefinition
     {
         $inputDefinition = AbstractApplication::getDefinition();
         $inputDefinition->setArguments();
